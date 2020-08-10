@@ -32,7 +32,7 @@ else if(products['products'])
             }
 
             </div>
-                <Paginate match={match} history={history} total_results={products.total_results} url={url}/>
+                <Paginate count={8} match={match} history={history} total_results={products.total_results} url={url}/>
 
         </div>)}
         else{

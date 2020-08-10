@@ -39,10 +39,10 @@ else{
 
                     return (<tr key={item._id}>
 
-                    <td>{item.first_name}</td>
-                    <td>{item.last_name}</td>
-                    <td>{item.email}</td>
-                    <td><Link to={`/nutrtionist_profile/${item._id}`} className='btn btn-sm btn-primary'>Details</Link></td>
+                    <td data-label='First Name'>{item.first_name}</td>
+                    <td data-label='Last Name'>{item.last_name}</td>
+                    <td data-label='email'>{item.email}</td>
+                    <td ><Link to={`/nutrtionist_profile/${item._id}`} className='btn btn-sm btn-primary'>Details</Link></td>
                     <td>{item.blocked?<span className='text-danger'>Inactive</span>:<span className='text-success'>Active</span>}</td>
                     <td><Button size='sm' onClick={()=>{props.Block(item._id)}} color='danger'>{item.blocked?'Unblock':"Block"}</Button></td>
                     </tr>)

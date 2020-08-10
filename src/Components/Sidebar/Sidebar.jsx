@@ -14,14 +14,21 @@ export default class Sidebar extends Component {
         <span color="info" onClick={this.props.toggle} style={{color: '#fff'}}>&times;</span>
         <h3>Admin Console</h3>
       </div>
+
+
       <div className='side-menu'>
         <Nav vertical className="list-unstyled pb-3">
+        <NavItem >
+
+          <NavLink className='text-white' to='/dashboard' tag={Link}> <i className="fa fa-tachometer fa-lg"></i> Dashboard</NavLink>
+        </NavItem>
+         
           <NavItem>
-            <NavLink className='text-white' tag={Link} to={'/diet_plan_orders/1'}>Diet Plan Orders</NavLink>
+          <NavLink className='text-white' tag={Link} to={'/diet_plan_orders/1'}><span className="fa fa-cutlery" aria-hidden="true"/> Diet Plan Orders </NavLink>
           </NavItem>
-          <SubMenu title="Shop Products"  items={submenus[0]}/>
-          <SubMenu title="Orders"  items={submenus[1]}/>
-          <SubMenu title="Nutritionists"  items={submenus[2]}/>
+          <SubMenu title={<span ><i className="fa fa-shopping-cart fa-lg"></i> Shop Products</span>}  items={submenus[0]}/>
+         <SubMenu title={<span ><i className="fa fa-first-order fa-lg"></i> Orders</span>}  items={submenus[1]}/>
+          <SubMenu title={<span ><i className="fa fa-user-md fa-lg"></i> Nutritionists</span>}   items={submenus[2]}/>
         </Nav>        
       </div>
     </div>

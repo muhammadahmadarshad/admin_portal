@@ -12,7 +12,7 @@ const DetailTable = (props) => {
   
     return ( <div className="mt-5">
 
-    <h1 className="text-c   enter text-primary">{`Nutritionist's Profile`}</h1>
+    <h1 className="text-center text-primary">{`Nutritionist's Profile`}</h1>
        <Table bordered hover className="mt-3">
 
             <tbody>

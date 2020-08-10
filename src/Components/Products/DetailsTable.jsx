@@ -39,7 +39,7 @@ export default function DetailsTable(props){
         setConfirm(!confirm)
     }
 
-    return(<div className='detail  '>
+    return(<div className='detail '>
 
             <Modal isOpen={confirm}>
             <ModalHeader toggle={toggle}/>
@@ -56,7 +56,7 @@ export default function DetailsTable(props){
                 </Button>
             </ModalFooter>
             </Modal>
-            <Table className='m-auto'>
+            <Table >
             <thead>
             <tr>
                 <th>name</th>
@@ -71,7 +71,7 @@ export default function DetailsTable(props){
             </thead>    
             <tbody>
             <tr>
-            <td><img alt={image} src={image} width='300' height='300'/></td>
+            <td><img alt={image} src={image} width='200' height='200'/></td>
             <td data-label='name'>{name}</td> 
             <td  data-label='price'>{price} $</td>
             <td data-label='stock'>{qty}</td>

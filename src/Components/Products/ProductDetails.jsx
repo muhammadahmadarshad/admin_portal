@@ -180,10 +180,10 @@ if(err){
        <NavBar toggle={toggle} isOpen={isOpen }/>
        <div className='container-fluid'>
         {!loading?<div>
-            <h3 className='bg-warning p-2 text-center rounded'>{data.name}</h3>
+            <h3 className=' p-2 text-center rounded'>{data.name}</h3>
         <div >
             <div className='m-auto'>
-            <div style={{width:'60%'}} className='w-50 m-auto'>{update?
+            <div style={{width:'80%'}} className='m-auto'>{update?
                 <UpdateForm
                     handleSubmit={handleSubmit}
                     onChangeBrand={onChangeBrand}

@@ -139,8 +139,8 @@ let toggle=()=>{
         
         <div className='m-auto'>
         
-        <Form onSubmit={handleSubmit} className='w-50 m-auto jumbotron '>  
-        <h4 className='text-center'>Add Product</h4>
+        <Form onSubmit={handleSubmit} style={{background:'#042330',color:"white"}} className='w-50 m-auto jumbotron '>  
+        <h4 className='text-center text-white'>Add Product</h4>
         <FormGroup>
             Name:
         <Input  type='text' value={name.value} invalid={name.err} onChange={onChangeName} name='name' placeholder='Enter Name'/>
