@@ -3,13 +3,15 @@ import Sidebar from '../Sidebar/Sidebar'
 import NavBar from '../Navbar/navbar'
 import classNames from 'classnames'
 
-import { Col, Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input, FormFeedback, Spinner } from 'reactstrap';
 import Axios from 'axios';
 
 
 export default function AddNutritionist(props)  {
   const [isOpen,setOpen]=React.useState(false)
    const [formData,setFormData]=React.useState({firstname:'',lastname:'',email:'',password:'',gender:''})
+   const [loading,setLoading]=React.useState()
+   const [err,setErr]=React.useState(false)
     const [touched,settouched]=React.useState({
         firstname: false,
         lastname: false,
@@ -72,15 +74,17 @@ function   validate(firstname, lastname, password, email) {
    function onSubmit(e){
 
     e.preventDefault()
-
+    setLoading(true)
     Axios({method:'POST',url:'http://localhost:5000/nutritionist/signup',data:formData})
     .then(res=>{
-
+        
         setResponse(res.data)
+        setLoading(false)
     })
     .catch(err=>{
 
-        setResponse(err.response.data)
+        setResponse(err.response.data?err.response.data:{success:false,msg:"Request Failed"})
+        setLoading(false)
     })
    }
    let errors=validate(formData.firstname,formData.lastname,formData.password,formData.email)
@@ -159,7 +163,7 @@ function   validate(firstname, lastname, password, email) {
       </FormGroup>
       <FormGroup check row className='mt-4'>
         <Col sm={{ size: 12, offset: 0 }}>
-          <Button style={{background:'#138496'}} block>Submit</Button>
+          <Button style={{background:'#138496'}} block>{loading?<Spinner/>:'Submit'}</Button>
         </Col>
       </FormGroup>
 

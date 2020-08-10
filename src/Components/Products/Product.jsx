@@ -7,7 +7,8 @@ const {Meta}= Card
 export default function Product(props)  {
     return (
      
-            
+
+    <Link className='text-decoration-none' to={`/product_details/${props.product._id}`}>
     <Card className='mt-2 shadow'> 
         <CardImg width='250' height='200' src={props.product.image.url}></CardImg>
         <CardBody>
@@ -18,7 +19,9 @@ export default function Product(props)  {
         <CardSubtitle>
             {props.product.description}
         </CardSubtitle>
-        <Link to={`/product_details/${props.product._id}`} className='btn text-white btn-primary btn-block'>Details</Link>
+   
         </CardBody>
+        
     </Card>
+    </Link>
     )}

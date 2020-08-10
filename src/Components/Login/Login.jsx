@@ -49,6 +49,9 @@ let [error,setError]=useState({error:false,msg:""})
 
   
     return (
+      <div className='layout'>
+
+      <h1 className='text-center text-dark mt-5'>Admin Portal</h1>
       <div className='box' >
       <h2 className='text-center text-design text-dark mb-2 text-shadow'>Health Portal</h2>
       <div className='jumbotron  login-center'>
@@ -94,6 +97,7 @@ let [error,setError]=useState({error:false,msg:""})
         </div>
         </form>
         
+      </div>
       </div>
       </div>
     );

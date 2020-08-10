@@ -2,20 +2,21 @@ import React from 'react'
 import Loading from '../Loading/Loading'
 import Product from './Product'
 import Paginate from './Paginate'
-export default function SearchedProducts({loading,products,match,history,url}){
-    console.log(products)
+export default function SearchedProducts({loading,products,match,history,url,err}){
 if(loading){
-
-
-
     return <Loading/>
 }
 
+else if(err) {
+    return <h1 className='text-center'>Products Not Found</h1>
+}
 
 
 else if(products['products'])
+
     {
 
+        if(products.products.length>0){
         return (<div >
             <div className='row'>
             {
@@ -33,14 +34,18 @@ else if(products['products'])
             </div>
                 <Paginate match={match} history={history} total_results={products.total_results} url={url}/>
 
-        </div>)
+        </div>)}
+        else{
+
+            return <h1 className='text-center'>Products Not Found</h1>
+
+        }
     }
 else {
 
     return <div>
 
 
-        <h3 className='text-center text-danger'>404 Not Found</h3>
     </div>
 }
 

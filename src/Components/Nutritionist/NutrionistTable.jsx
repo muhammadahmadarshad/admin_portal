@@ -2,6 +2,7 @@ import React from 'react'
 import { Table, Button } from 'reactstrap';
 import Paginate from '../Orders/Paginate';
 import Loading from '../Loading/Loading';
+import { Link } from 'react-router-dom';
 const NutritionistTable = (props) => {
 
     let  {loading,err}=props
@@ -29,6 +30,7 @@ else{
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Email</th>
+                <th>Details</th>
                 <th>Status</th>
                 <th>Block</th>
             </thead>
@@ -40,8 +42,9 @@ else{
                     <td>{item.first_name}</td>
                     <td>{item.last_name}</td>
                     <td>{item.email}</td>
+                    <td><Link to={`/nutrtionist_profile/${item._id}`} className='btn btn-sm btn-primary'>Details</Link></td>
                     <td>{item.blocked?<span className='text-danger'>Inactive</span>:<span className='text-success'>Active</span>}</td>
-                    <td><Button onClick={()=>{props.Block(item._id)}} color='danger'>{item.blocked?'Unblock':"Block"}</Button></td>
+                    <td><Button size='sm' onClick={()=>{props.Block(item._id)}} color='danger'>{item.blocked?'Unblock':"Block"}</Button></td>
                     </tr>)
 
                 })}

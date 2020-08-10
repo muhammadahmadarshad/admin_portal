@@ -46,13 +46,13 @@ export default function Products(props)  {
        
        <NavBar toggle={toggle} isOpen={isOpen }/>
        <div className='container'>
-
+            <h1 className='text-center text-primary'>Products</h1>
        {loading?<Loading/>:
             data.products.length?<div>
             <div className='row m-auto'>
            {data.products.map((item,index)=>{
 
-            return <div className='col-md-4 col-sm-6 col-12'><Product key={index} product={item}/></div>
+            return <div className='col-md-3 col-sm-6 col-12'><Product key={index} product={item}/></div>
            })}
            </div>
             <Paginate match={props.match} url={`/all_products/`} history={props.history} total_results={data.total_results}/>

@@ -15,6 +15,8 @@ const {
     qty,
     name,
     description,price,category,brand,facts,saving,
+    feature,
+    onChangeFeature
 
 
 
@@ -67,9 +69,27 @@ Brand:
     return(<option value={item.title}>{item.title}</option>)
     })
 }
+
+
 </Input>
 </FormGroup>
+
+
+
+
+
 {brand.err&&<span className='text-danger'>{brand.msg}</span>}
+
+<FormGroup>
+Featured:
+<Input  type='select' value={feature}  onChange={onChangeFeature} name='category' >
+<option value={false}>No</option>
+<option value={true}>Yes</option>
+
+
+
+</Input>
+</FormGroup>
 <FormGroup>
 Description:
 <Input invalid={description.err}  type='textarea' value={description.value} onChange={onChangeDes} name='description' placeholder='Enter Description'/>

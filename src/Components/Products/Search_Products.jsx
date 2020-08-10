@@ -9,13 +9,14 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import SearchedProducts from './Searched_Products'
+import Loading from '../Loading/Loading';
 export default function Search_Products(props)  {
   const {page,query}=useParams()
   const [isOpen,setOpen]=React.useState(false)
   const [product, setProduct]=useState(query)
   const [products,setProducts]=useState({})
   const [loading,setLoading] = useState(true) 
-
+  const [err,setErr]=useState(true)
   function onChangeProduct(e){
     setProduct(e.target.value)
   }
@@ -26,23 +27,31 @@ export default function Search_Products(props)  {
 }
 
   function get_products(){
+    setErr(false)
+    setLoading(true)
       if(query && page && parseInt(page)>0){
         Axios({
             method:'get',
             url:`http://localhost:5000/product/search_products/${query}/${page}`,
         }).then(res=>{
+          setProducts(res.data)
             setLoading(false)
-            setProducts(res.data)
+          setErr(false)
         }).catch(()=>{
 
-
+            setErr(true)
             setLoading(false)
         })
 
       }
-      else 
+      else {
+        setErr(true)
         setLoading(false)
+     
+      
+      }
   }
+
 
 
   
@@ -55,7 +64,8 @@ useEffect(get_products,[page,query])
       setOpen(!isOpen)
    }
 
-  
+
+
     return (
         <div className="App wrapper content">  
        
@@ -77,7 +87,7 @@ useEffect(get_products,[page,query])
                 </Form>
            </div>
            <div className='container'>
-           <SearchedProducts url={`/search_product/${query}/`}  loading={loading} match={props.match} history={props.history} products={products}/>
+           <SearchedProducts url={`/search_product/${query}/`}  loading={loading} match={props.match} history={props.history} products={products} />
 
            </div>
             

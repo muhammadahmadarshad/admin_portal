@@ -15,6 +15,11 @@ import OrderDetails from './Components/Orders/OrderDetails';
 import SearchOrder from './Components/Orders/SearchOrder';
 import AddNutritionist from './Components/Nutritionist/AddNutritionist';
 import NutritionistList from './Components/Nutritionist/NutritionistList';
+import DietPlanOrders from './Components/DietPlanOrders/DietPlanOrders';
+import DietPlanOrderDetails from './Components/DietPlanOrders/DietPlanOrderDetails';
+import Password from './Components/resetPassword/Password'
+import ChangePassword from './Components/resetPassword/Change-Password';
+import NutritionistDetails from './Components/Nutritionist/NutrinistDetails';
 function App() {
   
 
@@ -22,7 +27,8 @@ function App() {
     <div >
       <Router>
         <Switch>
-          <Route path='/login' component={Login}></Route>
+          <Route exact path='/login' component={Login}></Route>
+          <Route exact path='/forgotPassword' component={Password}></Route>
           <PrivateRoute path='/dashboard' component={Dashboard}></PrivateRoute>
           <PrivateRoute path='/add_product' component={AddProduct}></PrivateRoute>
           <PrivateRoute path="/all_products/:page" component={Products} />
@@ -35,7 +41,11 @@ function App() {
           <PrivateRoute path='/search_order' component={SearchOrder}/>
           <PrivateRoute path='/add_nutritionist' component={AddNutritionist}/>
           <PrivateRoute path='/nutritionist_list/:page?' component={NutritionistList}/>
-          <Redirect to='/dashboard'/>
+          <PrivateRoute path='/diet_plan_orders/:page?' component={DietPlanOrders}></PrivateRoute>
+          <PrivateRoute path='/diet_plan_order_details/:id' component={DietPlanOrderDetails} />
+          <PrivateRoute path='/change_password'  component={ChangePassword}/>
+          <PrivateRoute path='/nutrtionist_profile/:id' component={NutritionistDetails}/>
+          <Redirect to='/dashboard' />
         </Switch>
 
       </Router>

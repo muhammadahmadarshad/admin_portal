@@ -17,6 +17,7 @@ export default function ProductsDetails(props)  {
   const {id}=useParams()
   const [data,setData]= useState()
   let [name,setName] = useState({value:"",err:false,msg:""})
+  let [feature,setFeature] = useState(false)
   let [description,setDescription] = useState({value:"",err:false,msg:""})
   let [category,setCategory] = useState({value:"",err:false,msg:""})
   let [brand,setBrand] = useState({value:"",err:false,msg:""})
@@ -27,8 +28,12 @@ export default function ProductsDetails(props)  {
   let [saving,setSaving]= useState(false)
   let [update,setUpdate]= useState(false)
   let [remove,setRemove] =useState(false)
+  let [err,setErr] =useState(false)
 
+function onChangeFeature(e){
 
+    setFeature(e.target.value)
+}
 
 function onChangeFile(event)
 {
@@ -87,7 +92,14 @@ function getProduct(){
         setPrice({...price,value:data.price})
         setQty({...qty,value:data.qty})
         setFacts({...facts,value:data.facts})
+        setFeature(data.featured)
         setLoading(false)
+        setErr(false)
+    }).catch(()=>{
+        setErr(true)
+        setLoading(false)
+
+
     })  
 }
 
@@ -101,6 +113,7 @@ function handleSubmit(event){
     form.set('price',price.value)
     form.set('category',category.value)
     form.set('brand',brand.value)
+    form.set('featured',feature)
     form.append('image',formData.image)
     setSaving(true)    
     Axios({method:'put',url:"http://localhost:5000/product/updateProduct/"+data._id,headers:{'content-type':"application/x-www-form-urlencoded",
@@ -115,7 +128,6 @@ function handleSubmit(event){
 }).catch(err=>{
     setSaving(false)
     const {data}= err.response
-    console.log(data)
     if(data['path']){
         let {path,message}=data
         if(path[0]==='name')
@@ -137,12 +149,29 @@ function handleSubmit(event){
 })
 
 }
-
+let toggle=()=>{
+    setOpen(!isOpen)
+ }
    
     React.useEffect(getProduct,[id])
-  let toggle=()=>{
-      setOpen(!isOpen)
-   }
+
+if(err){
+
+
+    return (        <div className="App wrapper content">  
+    <Sidebar toggle={toggle} isOpen={isOpen}/>
+
+    <div className={classNames('content container-fluid',{'is-open':isOpen})}>
+    <NavBar toggle={toggle} isOpen={isOpen }/>
+    <div className='container-fluid'>
+        <h1 className="text-center text-danger">Product Not Found</h1>        
+</div> 
+</div>
+</div>       
+        
+)
+}
+
     return (
         <div className="App wrapper content">  
        <Sidebar toggle={toggle} isOpen={isOpen}/>
@@ -165,6 +194,8 @@ function handleSubmit(event){
                     onChangeName={onChangeName}
                     onChangePrice={onChangePrice}
                     onChangeQty={onChangeQty}
+                    onChangeFeature={onChangeFeature}
+                    feature={feature}
                     qty={qty}
                     name={name}
                     description={description} price={price} category={category} brand={brand} facts={facts}saving={saving}                
@@ -176,6 +207,7 @@ function handleSubmit(event){
                 setUpdate={setUpdate}
                 setRemove={setRemove}
                 remove={remove}
+                feature={feature}
                 history={props.history}
                 description={description.value} image={data.image.url} price={price.value} category={category.value} brand={brand.value} facts={facts.value}
                 />

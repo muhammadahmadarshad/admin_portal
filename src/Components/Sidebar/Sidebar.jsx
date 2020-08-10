@@ -3,6 +3,7 @@ import './Sidebar.css'
 import {Nav,NavItem,NavLink} from 'reactstrap';
 import classNames from 'classnames'
 import SubMenu from './Submenu'
+import { Link } from 'react-router-dom';
 export default class Sidebar extends Component {
   render() {
     return (
@@ -15,6 +16,9 @@ export default class Sidebar extends Component {
       </div>
       <div className='side-menu'>
         <Nav vertical className="list-unstyled pb-3">
+          <NavItem>
+            <NavLink className='text-white' tag={Link} to={'/diet_plan_orders/1'}>Diet Plan Orders</NavLink>
+          </NavItem>
           <SubMenu title="Shop Products"  items={submenus[0]}/>
           <SubMenu title="Orders"  items={submenus[1]}/>
           <SubMenu title="Nutritionists"  items={submenus[2]}/>

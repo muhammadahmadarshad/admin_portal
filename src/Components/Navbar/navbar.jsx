@@ -30,11 +30,11 @@ const NavBar = (props) => {
           </DropdownToggle>
           <DropdownMenu right className='mt-3 text-center'>
             <DropdownItem>
-              <Link className='text-dark' to='/account'>Account</Link>
+              <Link className='text-dark' to='/change_password'>Change Password</Link>
             </DropdownItem>
             <DropdownItem className='text-dark' onClick={()=>{
               
-              localStorage.removeItem('admin_token')
+              localStorage.removeItem('admin-token')
               
               dispatch({type:'remove_token'})}}>
               

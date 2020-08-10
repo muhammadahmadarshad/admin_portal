@@ -1,6 +1,6 @@
 import React from 'react'
 import './DetailsTable.css'
-import { Button, ButtonGroup,Modal,ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import { Button, ButtonGroup,Modal,ModalBody, ModalFooter, ModalHeader, Table, Spinner } from 'reactstrap'
 import { useState } from 'react'
 import Axios from 'axios'
 export default function DetailsTable(props){
@@ -8,7 +8,7 @@ export default function DetailsTable(props){
     const 
     {
         name,category,description,brand,price,qty,facts,image,setUpdate,delete_id,history
-        ,remove,setRemove
+        ,remove,setRemove,feature
     }=props
 
     function delete_product(){
@@ -39,12 +39,12 @@ export default function DetailsTable(props){
         setConfirm(!confirm)
     }
 
-    return(<div className='detail w-100'>
+    return(<div className='detail  '>
 
             <Modal isOpen={confirm}>
             <ModalHeader toggle={toggle}/>
             <ModalBody>
-                {!remove?"Are you sure to Delete the Product?":"Removing"}
+                {!remove?"Are you sure to Delete the Product?":<span>Removing.... <Spinner/></span>}
             </ModalBody>
             <ModalFooter>
 
@@ -55,11 +55,8 @@ export default function DetailsTable(props){
                     No
                 </Button>
             </ModalFooter>
-
             </Modal>
-
-
-            <table>
+            <Table className='m-auto'>
             <thead>
             <tr>
                 <th>name</th>
@@ -68,18 +65,20 @@ export default function DetailsTable(props){
                 <th>brand</th>
                 <th>category</th>
                 <th>facts</th> 
+                <th>Featured</th>
                 <th>description</th> 
             </tr>    
             </thead>    
             <tbody>
             <tr>
-            <td><img alt={image} src={image} width='100%' height='500'/></td>
+            <td><img alt={image} src={image} width='300' height='300'/></td>
             <td data-label='name'>{name}</td> 
             <td  data-label='price'>{price} $</td>
             <td data-label='stock'>{qty}</td>
             <td data-label='brand'>{brand}</td>
             <td data-label='category'>{category}</td> 
             <td data-label='facts'>{facts}</td>
+            <td data-label='feature'>{feature?"Yes":"No"}</td>
             <td data-label='description'>{description}</td>    
             <td  >{<ButtonGroup><Button onClick={toggle} color='danger'>Remove</Button>
             
@@ -94,7 +93,7 @@ export default function DetailsTable(props){
             } color='success'>Update</Button></ButtonGroup>}</td>   
             </tr>    
             </tbody>        
-            </table>
+            </Table>
         
         
         </div>
