@@ -4,12 +4,12 @@ import NavBar from '../Navbar/navbar'
 import classNames from 'classnames'
 import { Form, FormGroup, Input, Button } from 'reactstrap';
 import { useState } from 'react';
-import Product from './Product';
+
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import SearchedProducts from './Searched_Products'
-import Loading from '../Loading/Loading';
+
 export default function Search_Products(props)  {
   const {page,query}=useParams()
   const [isOpen,setOpen]=React.useState(false)

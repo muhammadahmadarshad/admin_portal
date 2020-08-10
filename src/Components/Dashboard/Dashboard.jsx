@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import './Dashboard.css'
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, 
 } from 'recharts';
 import { useEffect } from 'react';
 import Axios from 'axios';

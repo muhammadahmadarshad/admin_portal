@@ -3,7 +3,6 @@ import React from 'react';
 import {Card,CardBody,CardImg,CardTitle,CardSubtitle} from 'reactstrap'
 import { Link } from 'react-router-dom';
 
-const {Meta}= Card
 export default function Product(props)  {
     return (
      

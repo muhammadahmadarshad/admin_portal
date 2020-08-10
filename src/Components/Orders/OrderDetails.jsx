@@ -5,7 +5,7 @@ import NavBar from '../Navbar/navbar'
 import classNames from 'classnames'
 import Axios from 'axios'
 import { Table } from 'reactstrap'
-import { Link } from 'react-router-dom'
+
 const OrderDetails = (props) => {
     console.log(props.history)
     const [isOpen,setOpen]=React.useState(false)
@@ -24,6 +24,13 @@ const OrderDetails = (props) => {
             console.log(res.data)
             setOrder(res.data)
             setLoading(false)
+
+            setErr(false)
+
+
+        }).catch(()=>{
+
+            setErr({...err,err:true})
 
 
         })
