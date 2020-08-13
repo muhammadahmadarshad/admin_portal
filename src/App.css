@@ -52,13 +52,13 @@ table thead {
 }
 
 table tr {
-  border-bottom: 3px solid #ddd;
+  border-bottom: 3px solid #fff;
   display: block;
   margin-bottom: .625em;
 }
 
 table td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   display: block;
   font-size: .8em;
   text-align: right;

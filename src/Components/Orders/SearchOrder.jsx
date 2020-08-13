@@ -3,7 +3,7 @@ import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import NavBar from '../Navbar/navbar'
 import classNames from 'classnames'
-import { Form, FormGroup, Input, Button,Table} from 'reactstrap';
+import { Form, FormGroup, Input, Button,Table, InputGroup} from 'reactstrap';
 import SearchItem from './SearchItem'
 import Axios from 'axios';
 const SearchOrder = (props) => {
@@ -55,15 +55,22 @@ const SearchOrder = (props) => {
     <div className={classNames('content container-fluid',{'is-open':isOpen})}>
     
     <NavBar toggle={toggle} isOpen={isOpen }/> 
-    <div className='jumbotron'>
-               <h3>Search Products</h3>
+    <div className='jumbotron w-75 m-auto'>
+               <h3 className='text-center'>Search Order</h3>
                 <Form onSubmit={get}>
                     <FormGroup>
+                    <InputGroup >
                         <Input value={query} placeholder='Enter Order ID' onChange={onChangeQuery}/>
+                       
+                     
+                       
+                     <div class="input-group-append">
+                     <Button color='primary' >Search</Button>
+                     </div>
+                     </InputGroup>
                     </FormGroup>
-                    <FormGroup>
-                        <Button type='submit' className='btn w-50 m-auto btn-block btn-primary'>Search</Button>
-                    </FormGroup>
+                  
+       
                 </Form>
            </div>
 

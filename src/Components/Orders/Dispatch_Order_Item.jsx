@@ -49,7 +49,7 @@ const DisptachOrderItem = (props) => {
         <td>{item.total} $</td>
         <td>{new moment(item.createdAt).calendar()}</td>
         <td>{item.phone}</td>
-        <td ><Link className='btn btn-primary' >Show</Link></td>
+        <td ><Link className='btn btn-primary' to={`/product-order-details/${item._id}`}  >Show</Link></td>
         <td><i onClick={deleteOrder} className="fa fa-trash btn-danger btn btn-lg"></i></td>
     </tr> 
   

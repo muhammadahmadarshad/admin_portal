@@ -8,7 +8,7 @@ if(loading){
 }
 
 else if(err) {
-    return <h1 className='text-center'>Products Not Found</h1>
+    return <h1 className='text-center text-danger'>Products Not Found</h1>
 }
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from '../Sidebar/Sidebar'
 import NavBar from '../Navbar/navbar'
 import classNames from 'classnames'
-import { Form, FormGroup, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 import { useState } from 'react';
 
 import { useEffect } from 'react';
@@ -74,15 +74,19 @@ useEffect(get_products,[page,query])
 
        <div className={classNames('content container-fluid',{'is-open':isOpen})}>
        <NavBar toggle={toggle} isOpen={isOpen }/>
-       <div  >
-           <div className='jumbotron'>
-               <h3>Search Products</h3>
+       <div  className='m-auto' >
+           <div className='jumbotron w-75 m-auto'>
+               <h3 className='text-center'>Search Products</h3>
                 <Form onSubmit={onSearchClick}>
                     <FormGroup>
+                      <InputGroup >
+                     
                         <Input value={product} placeholder='Product' onChange={onChangeProduct}/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Button className='btn w-50 m-auto btn-block btn-primary'>Search</Button>
+                        <div class="input-group-append">
+                        <Button color='primary' >Search</Button>
+    </div>
+                        </InputGroup>
+                       
                     </FormGroup>
                 </Form>
            </div>
